@@ -1,5 +1,6 @@
-import { ArrowRight, Eye } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import AnimatedShield from './AnimatedShield';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -86,61 +87,10 @@ export default function Hero() {
 
         <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div className="relative w-full aspect-square max-w-lg mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-magenta-500/20 rounded-full animate-pulse-slow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-magenta-500/20 rounded-full animate-pulse-slow blur-2xl" />
 
-            <svg viewBox="0 0 400 400" className="w-full h-full animate-float">
-              <defs>
-                <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#06b6d4" />
-                  <stop offset="50%" stopColor="#8b5cf6" />
-                  <stop offset="100%" stopColor="#ec4899" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <path
-                d="M200 50 L340 110 L340 220 Q340 300 200 350 Q60 300 60 220 L60 110 Z"
-                fill="none"
-                stroke="url(#shieldGradient)"
-                strokeWidth="3"
-                filter="url(#glow)"
-                className="animate-draw-path"
-              />
-
-              <circle cx="200" cy="200" r="60" fill="url(#shieldGradient)" opacity="0.2" className="animate-pulse-slow" />
-
-              <g className="animate-spin-slow origin-center">
-                <circle cx="200" cy="200" r="80" fill="none" stroke="url(#shieldGradient)" strokeWidth="2" opacity="0.4" strokeDasharray="4 4" />
-                <circle cx="200" cy="200" r="100" fill="none" stroke="url(#shieldGradient)" strokeWidth="1" opacity="0.3" strokeDasharray="8 8" />
-              </g>
-
-              <g transform="translate(200, 200)">
-                <ellipse cx="0" cy="0" rx="25" ry="35" fill="#06b6d4" opacity="0.8" />
-                <ellipse cx="0" cy="0" rx="15" ry="25" fill="#1e293b" />
-                <circle cx="0" cy="0" r="12" fill="url(#shieldGradient)" className="animate-pulse" />
-                <circle cx="0" cy="0" r="6" fill="#0891b2" className="animate-pulse delay-100" />
-              </g>
-
-              <path d="M120 180 L100 200 M280 180 L300 200 M150 240 L130 260 M250 240 L270 260 M200 140 L200 110 M200 260 L200 290"
-                stroke="url(#shieldGradient)"
-                strokeWidth="2"
-                opacity="0.6"
-                className="animate-pulse"
-              />
-
-              <circle cx="100" cy="200" r="4" fill="#06b6d4" className="animate-ping-slow" />
-              <circle cx="300" cy="200" r="4" fill="#ec4899" className="animate-ping-slow delay-200" />
-              <circle cx="200" cy="110" r="4" fill="#8b5cf6" className="animate-ping-slow delay-400" />
-            </svg>
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Eye className="w-16 h-16 text-cyan-400 opacity-0 animate-fadeIn delay-1000" />
+            <div className="relative w-full h-full animate-float">
+              <AnimatedShield />
             </div>
           </div>
 
